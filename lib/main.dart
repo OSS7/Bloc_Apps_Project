@@ -1,5 +1,8 @@
 import 'package:cubit_test/counter/bloc/counter_bloc.dart';
 import 'package:cubit_test/counter/counter_view.dart';
+import 'package:cubit_test/theme/bloc/theme_bloc.dart';
+import 'package:cubit_test/theme/service/theme_app.dart';
+import 'package:cubit_test/theme/theme_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,28 +29,36 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => LocalizationCubit()..getLocal(),
         ),
+        BlocProvider(
+          create: (BuildContext context) => ThemeBloc()..add(GetTheme()),
+        ),
       ],
-      child: BlocBuilder<LocalizationCubit, LocalizationState>(
-        builder: (context, state) {
-          if (state is UpdateLocalization) {
-            return MaterialApp(
-              locale: state.local,
-              supportedLocales: const [Locale('en'), Locale('ar')],
-              localizationsDelegates: const [
-                AppLocalization.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate
-              ],
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
-                useMaterial3: true,
-              ),
-              home: const LocalizationView(),
-            );
+      child: Builder(
+        builder: (context) {
+          Locale? local;
+          ThemeData? theme;
+          final localeCubit = context.watch<LocalizationCubit>().state;
+          final themeBloc = context.watch<ThemeBloc>().state;
+          if (themeBloc is UpdateTheme) {
+            theme = themeBloc.theme;
           }
-          return SizedBox();
+          if (localeCubit is UpdateLocalization) {
+            local = localeCubit.local;
+          }
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            locale: local,
+            supportedLocales: const [Locale('en'), Locale('ar')],
+            localizationsDelegates: const [
+              AppLocalization.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate
+            ],
+            theme: theme,
+            title: 'Flutter Demo',
+            home: const ThemeView(),
+          );
         },
       ),
     );

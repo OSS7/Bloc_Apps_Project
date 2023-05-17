@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../service/local_storage_service.dart';
+import '../service/localization_local_storage.dart';
 
 part 'localization_state.dart';
 
