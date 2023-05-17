@@ -6,6 +6,8 @@
 /home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
 /home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
 /home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/assets/languages/ar.json
+/home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/assets/languages/en.json
 /home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
 /home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 /home/ossama/StudioProjects/cubit_test/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
